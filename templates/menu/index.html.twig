@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Menu du Restaurant{% endblock %}
+
+{% block body %}
+<div class="container py-5">
+    <div class="text-center mb-5">
+        <h1 class="display-5 fw-bold">Menu du Restaurant</h1>
+        <p class="text-muted">Découvrez nos plats faits maison, inspirés de la cuisine orientale.</p>
+    </div>
+
+    {% for section in menu %}
+        <div class="mb-5">
+            <h2 class="border-bottom pb-2 mb-4 text-uppercase text-primary">{{ section.section }}</h2>
+
+            <div class="row g-4">
+                {% for item in section.items %}
+                    <div class="col-md-6">
+                        <div class="card shadow-sm h-100">
+                            <div class="card-body">
+                                <h5 class="card-title fw-bold">{{ item.name }}</h5>
+                                <p class="card-text text-muted mb-2">{{ item.description }}</p>
+                                <p class="fw-semibold text-end text-success">{{ item.price|number_format(2, ',', ' ') }} €</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
+
+
